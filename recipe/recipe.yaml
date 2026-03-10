@@ -14,7 +14,10 @@ source:
 build:
   number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: |
+    ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    rm -f $SP_DIR/sagemaker/__init__.py
+    rm -rf $SP_DIR/sagemaker/__pycache__
 
 requirements:
   host:
